@@ -1,11 +1,11 @@
 # DebtCollector
 
-My name is Lem Euro (not real, but used), I am currently in Ukraine, in the city of Odessa, and I am a beginner mobile developer. I write in the Swift language, in the SwiftUI framework.
+This is my very first application where I practiced this stuff:
 
-Here I post applications that I have developed in order to practice the various technologies that I have learned.
+Some basic UI Views, like:
+NavigationView, Form, Section, Text, TextField, HStack, VStack, Spacer, Picker, DatePicker, ForEach.
 
-I am currently looking for my first job as a mobile developer. I think that the first job should be offline, so since I'm in Ukraine now, I'm looking for a team to join.
+Some modifiers, like:
+.foregroundColor, .toolbar, .navigationTitle, .pickerStyle, .keyboardType, .focused.
 
-DebtCollector
-
-This is my very first application where I applied the following technologies:
+I'm also used: computed properties, property wrappers like @State and @FocusState, different types of variables and constants (Int, Double, Bool, String), I'm used also ternary operator and "if" conditional operator, worked a little with "date", intervals and keyboard focus behavior with Done button inside. Also tried some formats for text views.

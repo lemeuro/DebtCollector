@@ -8,140 +8,76 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var debtAmount = 0.0
-    @State private var debtorsNumbers = 1
-    @State private var returnPercentage = 20
-    @State private var debtDate = Date.now
-    @State private var debtDeadline = Date.now.addingTimeInterval(2_592_000)
-    @State private var totalPaid = 0.0
-    @FocusState private var showingKeyboard: Bool
-    
-    var amountToPay: Double {
-        let percentAmount = debtAmount / 100 * Double(returnPercentage)
-        return percentAmount + debtAmount
-    }
-    
-    var amountPerDebtor: Double {
-        amountToPay / Double(debtorsNumbers)
-    }
-    
-    var debtBalance: Double {
-        amountToPay - totalPaid
-    }
-    
-    var dateDifference: Int {
-        let interval = debtDeadline.timeIntervalSince(debtDate)
-        return Int(interval / 86400)
-    }
-    
-    var remainingDays: Int {
-        let remainingInterval = debtDeadline.timeIntervalSince(Date.now)
-        return Int(remainingInterval / 86400)
-    }
-        
-    var whatToDo: String {
-        if remainingDays < -30 && debtBalance > 0 {
-            return "Kill the debtor!"
-        } else if remainingDays <= 0 && debtBalance > 0 {
-            return "Time is Up. Reach out to the debtor and give him a thrashing."
-        } else {
-            return "Relax. You have passive income."
-        }
-    }
-    
-    let localCurrency: FloatingPointFormatStyle<Double>.Currency = .currency(code: Locale.current.currencyCode ?? "USD")
+    @StateObject var debtors = Debtors()
+    @State private var showingAddDebtor = false
     
     var body: some View {
         NavigationView {
-            Form {
-                Section {
-                    HStack {
-                        Text("Debt Amount:")
-                        TextField("Debt amount", value: $debtAmount, format: localCurrency)
-                            .keyboardType(.decimalPad)
-                            .focused($showingKeyboard)
-                    }
-                    
-                    VStack {
-                        HStack {
-                            Text("Number of Debtors:")
-                            Spacer()
-                        }
-                        Picker("How many debtors?", selection: $debtorsNumbers) {
-                            ForEach(1..<6, id: \.self) {
-                                Text(String($0))
-                            }
-                        }
-                        .pickerStyle(.segmented)
-                    }
-                    
-                    DatePicker("Deal Date", selection: $debtDate, displayedComponents: .date)
-                    
-                    DatePicker("Debt Deadline", selection: $debtDeadline, displayedComponents: .date)
-                    
-                    Picker("Return Percentage:", selection: $returnPercentage) {
-                        ForEach(0..<201) {
-                            Text($0, format: .percent)
-                        }
-                    }
+            List {
+                if !debtors.activeSouls.isEmpty {
+                    DebtorSection(debtors: debtors, title: "Active", filteredDebtors: debtors.activeSouls, deleteSouls: removeActiveSouls)
                 }
                 
-                Section {
-                    VStack(alignment: .leading) {
-                        HStack {
-                            Text("Full amount to pay:")
-                            Text(amountToPay, format: localCurrency)
-                        }
-                        HStack {
-                            Text("Per Debtor:")
-                            Text(amountPerDebtor, format: localCurrency)
-                        }
-                    }
-                    
-                    HStack {
-                        Text("Number of days to pay off:")
-                        Text("\(dateDifference)")
-                    }
-                } header: {
-                    Text("Debt Summary")
+                if !debtors.overdueSouls.isEmpty {
+                    DebtorSection(debtors: debtors, title: "Overdue", filteredDebtors: debtors.overdueSouls, deleteSouls: removeOverdueSouls)
                 }
                 
-                Section {
-                    HStack {
-                        Text("Paid up to date:")
-                        TextField("Total Paid", value: $totalPaid, format: localCurrency)
-                            .keyboardType(.decimalPad)
-                            .focused($showingKeyboard)
-                    }
-                    
-                    HStack {
-                        Text("Remaining Debt:")
-                        Text(debtBalance, format: localCurrency)
-                    }
-                    
-                    HStack {
-                        Text("Remaining Days to Pay All:")
-                        Text("\(remainingDays)")
-                            .foregroundColor(remainingDays < 0 ? .red : .primary)
-                        
-                    }
+                if !debtors.closedSouls.isEmpty {
+                    DebtorSection(debtors: debtors, title: "Closed", filteredDebtors: debtors.closedSouls, deleteSouls: removeClosedSouls)
                 }
                 
-                Text(whatToDo)
-                    .foregroundColor(remainingDays > 0 ? .green : remainingDays <= 0 && debtBalance > 0 ? .red : .green)
-            
+                if !debtors.killedSouls.isEmpty {
+                    DebtorSection(debtors: debtors, title: "Killed", filteredDebtors: debtors.killedSouls, deleteSouls: removeKilledSouls)
+                }
             }
             .navigationTitle("DebtCollector")
             .toolbar {
-                ToolbarItemGroup(placement: .keyboard) {
-                    Spacer()
-                    
-                    Button("Done") {
-                        showingKeyboard = false
+                ToolbarItem(placement: .navigationBarLeading) {
+                    EditButton()
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button {
+                        showingAddDebtor.toggle()
+                    } label: {
+                        Label("Add new debtor", systemImage: "plus")
                     }
                 }
             }
+            .sheet(isPresented: $showingAddDebtor) {
+                AddView(debtors: debtors)
+            }
         }
+    }
+    
+    func removeSouls(at offsets: IndexSet, in inputArray: [Debtor]) {
+        var objectsToDelete = IndexSet()
+        
+        for offset in offsets {
+            let soul = inputArray[offset]
+            
+            if let index = debtors.souls.firstIndex(of: soul) {
+                objectsToDelete.insert(index)
+            }
+        }
+        
+        debtors.souls.remove(atOffsets: objectsToDelete)
+    }
+    
+    func removeActiveSouls(at offsets: IndexSet) {
+        removeSouls(at: offsets, in: debtors.activeSouls)
+    }
+    
+    func removeClosedSouls(at offsets: IndexSet) {
+        removeSouls(at: offsets, in: debtors.closedSouls)
+    }
+    
+    func removeOverdueSouls(at offsets: IndexSet) {
+        removeSouls(at: offsets, in: debtors.overdueSouls)
+    }
+    
+    func removeKilledSouls(at offsets: IndexSet) {
+        removeSouls(at: offsets, in: debtors.killedSouls)
     }
 }
 

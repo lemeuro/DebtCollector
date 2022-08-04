@@ -7,18 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		595D8D492889A9EC008A19B7 /* Debtor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D8D482889A9EC008A19B7 /* Debtor.swift */; };
+		595D8D4B2889AAB7008A19B7 /* Debtors.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D8D4A2889AAB7008A19B7 /* Debtors.swift */; };
+		595D8D4D2889BC95008A19B7 /* AddView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D8D4C2889BC95008A19B7 /* AddView.swift */; };
+		595D8D4F2889D4B2008A19B7 /* FormatStyle-LocalCurrency.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D8D4E2889D4B2008A19B7 /* FormatStyle-LocalCurrency.swift */; };
+		595D8D512889D5B6008A19B7 /* View-DebtorStyling.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D8D502889D5B5008A19B7 /* View-DebtorStyling.swift */; };
+		595D8D532889D8FA008A19B7 /* DebtorSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 595D8D522889D8FA008A19B7 /* DebtorSection.swift */; };
 		597321D4287C721E0093D6FB /* DebtCollectorApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597321D3287C721E0093D6FB /* DebtCollectorApp.swift */; };
 		597321D6287C721E0093D6FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597321D5287C721E0093D6FB /* ContentView.swift */; };
 		597321D8287C721F0093D6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597321D7287C721F0093D6FB /* Assets.xcassets */; };
 		597321DB287C721F0093D6FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597321DA287C721F0093D6FB /* Preview Assets.xcassets */; };
+		59FEC11D289531C7007F6C4D /* DebtorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FEC11C289531C7007F6C4D /* DebtorView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		595D8D482889A9EC008A19B7 /* Debtor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debtor.swift; sourceTree = "<group>"; };
+		595D8D4A2889AAB7008A19B7 /* Debtors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Debtors.swift; sourceTree = "<group>"; };
+		595D8D4C2889BC95008A19B7 /* AddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddView.swift; sourceTree = "<group>"; };
+		595D8D4E2889D4B2008A19B7 /* FormatStyle-LocalCurrency.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FormatStyle-LocalCurrency.swift"; sourceTree = "<group>"; };
+		595D8D502889D5B5008A19B7 /* View-DebtorStyling.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View-DebtorStyling.swift"; sourceTree = "<group>"; };
+		595D8D522889D8FA008A19B7 /* DebtorSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtorSection.swift; sourceTree = "<group>"; };
 		597321D0287C721E0093D6FB /* DebtCollector.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DebtCollector.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		597321D3287C721E0093D6FB /* DebtCollectorApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtCollectorApp.swift; sourceTree = "<group>"; };
 		597321D5287C721E0093D6FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		597321D7287C721F0093D6FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		597321DA287C721F0093D6FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		59FEC11C289531C7007F6C4D /* DebtorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +67,13 @@
 			children = (
 				597321D3287C721E0093D6FB /* DebtCollectorApp.swift */,
 				597321D5287C721E0093D6FB /* ContentView.swift */,
+				595D8D522889D8FA008A19B7 /* DebtorSection.swift */,
+				59FEC11C289531C7007F6C4D /* DebtorView.swift */,
+				595D8D4C2889BC95008A19B7 /* AddView.swift */,
+				595D8D502889D5B5008A19B7 /* View-DebtorStyling.swift */,
+				595D8D4E2889D4B2008A19B7 /* FormatStyle-LocalCurrency.swift */,
+				595D8D482889A9EC008A19B7 /* Debtor.swift */,
+				595D8D4A2889AAB7008A19B7 /* Debtors.swift */,
 				597321D7287C721F0093D6FB /* Assets.xcassets */,
 				597321D9287C721F0093D6FB /* Preview Content */,
 			);
@@ -138,7 +159,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				597321D6287C721E0093D6FB /* ContentView.swift in Sources */,
+				595D8D492889A9EC008A19B7 /* Debtor.swift in Sources */,
+				595D8D4D2889BC95008A19B7 /* AddView.swift in Sources */,
+				595D8D532889D8FA008A19B7 /* DebtorSection.swift in Sources */,
+				595D8D512889D5B6008A19B7 /* View-DebtorStyling.swift in Sources */,
+				595D8D4F2889D4B2008A19B7 /* FormatStyle-LocalCurrency.swift in Sources */,
 				597321D4287C721E0093D6FB /* DebtCollectorApp.swift in Sources */,
+				59FEC11D289531C7007F6C4D /* DebtorView.swift in Sources */,
+				595D8D4B2889AAB7008A19B7 /* Debtors.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

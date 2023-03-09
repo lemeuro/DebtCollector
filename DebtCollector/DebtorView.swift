@@ -12,9 +12,13 @@ struct DebtorView: View {
     var debtor: Debtor
     
     var body: some View {
-        List {
+        Form {
             Section {
                 Text(debtor.name)
+                
+                if let desc = debtor.desc {
+                    Text(desc)
+                }
                 
                 HStack {
                     Text("Paid:")
@@ -23,7 +27,7 @@ struct DebtorView: View {
             }
             
             Section {
-                Button("Add 100 bucks to paid balance") {
+                Button("Add 100 to paid balance") {
                     var newDebtor = debtor
                     newDebtor.paid += 100
                     

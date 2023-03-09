@@ -9,14 +9,15 @@ import Foundation
 
 struct Debtor: Identifiable, Codable, Equatable {
     var id = UUID()
-    let name: String
-    let status: String
-    let debt: Double
+    var name: String
+    var desc: String?
+    var status: String
+    var debt: Double
     var numberOfPeople = 1
-    let dealDate: Date
-    let deadlineDate: Date
-    let returnPercentage: Int
+    var dealDate: Date
+    var deadlineDate: Date
+    var returnPercentage: Int
     var paid = 0.0
     
-    static let example = Debtor(name: "Machete", status: "Active", debt: 52_432_913, dealDate: Date.now, deadlineDate: Date.now.addingTimeInterval(86400), returnPercentage: 20)
+    static let example = Debtor(name: "Machete", desc: "He owes me money", status: "Active", debt: 52_432_913, dealDate: Date.now, deadlineDate: Date.now.addingTimeInterval(86400), returnPercentage: 20)
 }

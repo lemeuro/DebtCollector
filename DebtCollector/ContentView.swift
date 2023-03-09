@@ -14,26 +14,28 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             List {
-                if !debtors.activeSouls.isEmpty {
+                if debtors.activeSouls.isNotEmpty {
                     DebtorSection(debtors: debtors, title: "Active", filteredDebtors: debtors.activeSouls, deleteSouls: removeActiveSouls)
                 }
                 
-                if !debtors.overdueSouls.isEmpty {
+                if debtors.overdueSouls.isNotEmpty {
                     DebtorSection(debtors: debtors, title: "Overdue", filteredDebtors: debtors.overdueSouls, deleteSouls: removeOverdueSouls)
                 }
                 
-                if !debtors.closedSouls.isEmpty {
+                if debtors.closedSouls.isNotEmpty {
                     DebtorSection(debtors: debtors, title: "Closed", filteredDebtors: debtors.closedSouls, deleteSouls: removeClosedSouls)
                 }
                 
-                if !debtors.killedSouls.isEmpty {
+                if debtors.killedSouls.isNotEmpty {
                     DebtorSection(debtors: debtors, title: "Killed", filteredDebtors: debtors.killedSouls, deleteSouls: removeKilledSouls)
                 }
             }
             .navigationTitle("DebtCollector")
             .toolbar {
                 ToolbarItem(placement: .navigationBarLeading) {
-                    EditButton()
+                    if debtors.activeSouls.isNotEmpty || debtors.overdueSouls.isNotEmpty || debtors.closedSouls.isNotEmpty || debtors.killedSouls.isNotEmpty {
+                        EditButton()
+                    }
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {

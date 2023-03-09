@@ -17,6 +17,7 @@
 		597321D6287C721E0093D6FB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 597321D5287C721E0093D6FB /* ContentView.swift */; };
 		597321D8287C721F0093D6FB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597321D7287C721F0093D6FB /* Assets.xcassets */; };
 		597321DB287C721F0093D6FB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 597321DA287C721F0093D6FB /* Preview Assets.xcassets */; };
+		5982E9E129B8ED4F0016E0CE /* Array-isNotEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5982E9E029B8ED4F0016E0CE /* Array-isNotEmpty.swift */; };
 		59FEC11D289531C7007F6C4D /* DebtorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 59FEC11C289531C7007F6C4D /* DebtorView.swift */; };
 /* End PBXBuildFile section */
 
@@ -32,6 +33,7 @@
 		597321D5287C721E0093D6FB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		597321D7287C721F0093D6FB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		597321DA287C721F0093D6FB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		5982E9E029B8ED4F0016E0CE /* Array-isNotEmpty.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Array-isNotEmpty.swift"; sourceTree = "<group>"; };
 		59FEC11C289531C7007F6C4D /* DebtorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DebtorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -72,6 +74,7 @@
 				595D8D4C2889BC95008A19B7 /* AddView.swift */,
 				595D8D502889D5B5008A19B7 /* View-DebtorStyling.swift */,
 				595D8D4E2889D4B2008A19B7 /* FormatStyle-LocalCurrency.swift */,
+				5982E9E029B8ED4F0016E0CE /* Array-isNotEmpty.swift */,
 				595D8D482889A9EC008A19B7 /* Debtor.swift */,
 				595D8D4A2889AAB7008A19B7 /* Debtors.swift */,
 				597321D7287C721F0093D6FB /* Assets.xcassets */,
@@ -165,6 +168,7 @@
 				595D8D512889D5B6008A19B7 /* View-DebtorStyling.swift in Sources */,
 				595D8D4F2889D4B2008A19B7 /* FormatStyle-LocalCurrency.swift in Sources */,
 				597321D4287C721E0093D6FB /* DebtCollectorApp.swift in Sources */,
+				5982E9E129B8ED4F0016E0CE /* Array-isNotEmpty.swift in Sources */,
 				59FEC11D289531C7007F6C4D /* DebtorView.swift in Sources */,
 				595D8D4B2889AAB7008A19B7 /* Debtors.swift in Sources */,
 			);
